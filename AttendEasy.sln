@@ -3,13 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttendEasy.Domain", "AttendEasy.Domain\AttendEasy.Domain.csproj", "{D6E23FC0-70F0-49B1-93CC-2DA26189DD8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AttendEasy.Domain", "AttendEasy.Domain\AttendEasy.Domain.csproj", "{D6E23FC0-70F0-49B1-93CC-2DA26189DD8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttendEasy.Application", "AttendEasy.Application\AttendEasy.Application.csproj", "{5A55745C-1411-4F70-8534-7A8767F5B171}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AttendEasy.Application", "AttendEasy.Application\AttendEasy.Application.csproj", "{5A55745C-1411-4F70-8534-7A8767F5B171}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttendEasy.Infrastructure", "AttendEasy.Infrastructure\AttendEasy.Infrastructure.csproj", "{E8092CCD-CF77-4DCD-8D1C-46819B7766AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AttendEasy.Infrastructure", "AttendEasy.Infrastructure\AttendEasy.Infrastructure.csproj", "{E8092CCD-CF77-4DCD-8D1C-46819B7766AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttendEasy.Presentation", "AttendEasy.Presentation\AttendEasy.Presentation.csproj", "{62AB4032-1797-46F5-A26F-D1E3AE7FB257}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AttendEasy.Presentation", "AttendEasy.Presentation\AttendEasy.Presentation.csproj", "{62AB4032-1797-46F5-A26F-D1E3AE7FB257}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{59720758-A809-447B-BE3A-27ECF0BAE035}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{7542DE6D-BD42-42D2-8F61-F561ADE72240}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{70DE5516-476E-45CE-875D-864442057BF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttendEasy.Persistence", "AttendEasy.Persistence\AttendEasy.Persistence.csproj", "{69638150-6B6D-4468-81EA-B37BA3B8EE1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +41,20 @@ Global
 		{62AB4032-1797-46F5-A26F-D1E3AE7FB257}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62AB4032-1797-46F5-A26F-D1E3AE7FB257}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62AB4032-1797-46F5-A26F-D1E3AE7FB257}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69638150-6B6D-4468-81EA-B37BA3B8EE1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69638150-6B6D-4468-81EA-B37BA3B8EE1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69638150-6B6D-4468-81EA-B37BA3B8EE1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69638150-6B6D-4468-81EA-B37BA3B8EE1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D6E23FC0-70F0-49B1-93CC-2DA26189DD8E} = {59720758-A809-447B-BE3A-27ECF0BAE035}
+		{5A55745C-1411-4F70-8534-7A8767F5B171} = {59720758-A809-447B-BE3A-27ECF0BAE035}
+		{E8092CCD-CF77-4DCD-8D1C-46819B7766AB} = {7542DE6D-BD42-42D2-8F61-F561ADE72240}
+		{62AB4032-1797-46F5-A26F-D1E3AE7FB257} = {70DE5516-476E-45CE-875D-864442057BF4}
+		{69638150-6B6D-4468-81EA-B37BA3B8EE1C} = {7542DE6D-BD42-42D2-8F61-F561ADE72240}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DA993195-4BAB-4308-887F-D26517C92B75}

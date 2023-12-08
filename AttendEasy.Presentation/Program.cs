@@ -1,8 +1,13 @@
+using AttendEasy.Application.Interfaces;
+using AttendEasy.Application.Services;
+using AttendEasy.Persistence;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<IStudentService, StudentService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
