@@ -1,4 +1,4 @@
-﻿using AttendEasy.Domain.Entities;
+﻿using AttendEasy.Domain.Entities.Studentes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
