@@ -1,4 +1,6 @@
 ﻿using AttendEasy.Domain.Entities.Classes;
+using AttendEasy.Domain.Entities.Studentes.Enums;
+using AttendEasy.Domain.Entities.Studentes.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -25,12 +27,28 @@ namespace AttendEasy.Domain.Entities.Studentes
             string motherJob = "",
             string fatherMobile = "",
             string motherMobile = "",
-            string deadParent = "",
+            DeadParentStatus deadParent = DeadParentStatus.None,
             bool leftParent = false,
             string discription = "",
             string address = "")
         {
             Id = Guid.NewGuid();
+            if(string.IsNullOrWhiteSpace(nationalCode))
+            {
+                throw new Exception("NationalCode Is Required.");
+            }
+            if (string.IsNullOrWhiteSpace(studentCode))
+            {
+                throw new Exception("StudentCode Is Required.");
+            }
+            if (string.IsNullOrWhiteSpace(FirstName))
+            {
+                throw new Exception("FirstName Is Required.");
+            }
+            if (string.IsNullOrWhiteSpace(LastName))
+            {
+                throw new Exception("LastName Is Required.");
+            }
             NationalCode = nationalCode;
             StudentCode = studentCode;
             FirstName = firstName;
@@ -49,40 +67,43 @@ namespace AttendEasy.Domain.Entities.Studentes
             Address = address;
             RegisterDate = registerDate;
             Class = @class;
+            RegisterDate = DateTime.Now;
         }
 
         [Required]
         public Guid Id { get;  }
         [Required]
-        public string NationalCode { get;  } = string.Empty;
+        public NationalCode NationalCode { get;  } = string.Empty;
         [Required]
-        public string StudentCode { get;  } = string.Empty;
+        public StudentCode StudentCode { get;  } = string.Empty;
         [Required]
-        public string FirstName { get; private set; } = string.Empty;
+        public FirstName FirstName { get; set; } = string.Empty;
         [Required]
-        public string LastName { get; private set; } = string.Empty;
+        public LastName LastName { get; set; } = string.Empty;
         //Url Of Profile Photo
-        public string? Profile { get; private set; }
-        public string? MobileNumber { get; private set; }
-        public string? HomeNumber { get; private set; }
-        public string? FatherName { get; private set; }
-        public string? FatherJob { get; private set; }
-        public string? MotherJob { get; private set; }
-        public string? FatherMobile { get; private set; }
-        public string? MotherMobile { get; private set; }
+        public string? Profile { get; set; }
+        public MobileNumber? MobileNumber { get; set; }
+        public HomeNumber? HomeNumber { get; set; }
+        public FirstName? FatherName { get; set; }
+        public Job? FatherJob { get; set; }
+        public Job? MotherJob { get; set; }
+        public MobileNumber? FatherMobile { get; set; }
+        public MobileNumber? MotherMobile { get; set; }
         //Foat valedeyan
-        public string? DeadParent { get; private set; }
+        public DeadParentStatus? DeadParent { get; set; }
         //Jodai valedeyan
-        public bool? LeftParent { get; private set; }
+        public bool? LeftParent { get; set; }
         //Extra Field For Others 
-        public string? Discription { get; private set; }
-        public string? Address { get; private set; }
+        public string? Discription { get; set; }
+        public string? Address { get; set; }
         [Required]
-        public byte Score { get; private set; } = 20;
+        public Score Score { get; private set; } = 20;
         [Required]
-        public DateTime RegisterDate { get; private set; }
+        public DateTime RegisterDate { get; set; }
         //Class Of Student
         [Required]
-        public Class Class { get; private set; } = new Class();
+        public Class Class { get; set; } = new Class();
+
+        public void 
     }
 }

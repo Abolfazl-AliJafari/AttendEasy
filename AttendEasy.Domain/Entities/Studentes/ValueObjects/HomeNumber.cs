@@ -1,14 +1,18 @@
-﻿namespace AttendEasy.Domain.Entities.Studentes
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AttendEasy.Domain.Entities.Studentes.ValueObjects
 {
-    public class LastName
+    public class HomeNumber
     {
-        public LastName(string value)
+        public HomeNumber(string value)
         {
             if (Validate(value))
                 Value = value;
-            
         }
-        
         public string Value { get; private set; } = string.Empty;
         private bool Validate(string value)
         {
@@ -29,9 +33,9 @@
             throw new NotImplementedException();
         }
 
-        public static implicit operator string(LastName LastName)
-            => LastName.Value;
-        public static implicit operator LastName(string Value)
+        public static implicit operator string(HomeNumber HomeNumber)
+            => HomeNumber.Value;
+        public static implicit operator HomeNumber(string Value)
              => new(Value);
     }
 }

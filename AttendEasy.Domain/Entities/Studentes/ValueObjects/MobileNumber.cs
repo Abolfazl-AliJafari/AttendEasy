@@ -1,8 +1,14 @@
-﻿namespace AttendEasy.Domain.Entities.Studentes
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AttendEasy.Domain.Entities.Studentes.ValueObjects
 {
-    public class FirstName
+    public class MobileNumber
     {
-        public FirstName(string value)
+        public MobileNumber(string value)
         {
             if (Validate(value))
                 Value = value;
@@ -27,9 +33,9 @@
             throw new NotImplementedException();
         }
 
-        public static implicit operator string(FirstName FirstName)
-            => FirstName.Value;
-        public static implicit operator FirstName(string Value)
+        public static implicit operator string(MobileNumber MobileNumber)
+            => MobileNumber.Value;
+        public static implicit operator MobileNumber(string Value)
              => new(Value);
     }
 }
