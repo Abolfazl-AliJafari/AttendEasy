@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AttendEasy.Domain.Entities.Studentes.ValueObjects
+﻿namespace AttendEasy.Domain.Entities.Fieldes.ValueObjects
 {
-    public class Job
+    public class Title
     {
-        public Job(string value)
+        public Title(string value)
         {
             using (var result = Validate(value))
             {
                 if (result.Success)
                     Value = value;
-                throw new ArgumentException(result.Message);
+                throw new Exception(result.Message);
             }
         }
-        public string Value { get; set; } = string.Empty;
+        public string Value { get; private set; } = string.Empty;
         private Result Validate(string value)
         {
             using (var result = CheckLanguage(value))
@@ -43,9 +37,9 @@ namespace AttendEasy.Domain.Entities.Studentes.ValueObjects
             throw new NotImplementedException();
         }
 
-        public static implicit operator string(Job Job)
-            => Job.Value;
-        public static implicit operator Job(string Value)
+        public static implicit operator string(Title Title)
+            => Title.Value;
+        public static implicit operator Title(string Value)
              => new(Value);
     }
 }

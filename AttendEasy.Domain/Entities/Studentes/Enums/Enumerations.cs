@@ -13,4 +13,9 @@ namespace AttendEasy.Domain.Entities.Studentes.Enums
         Mother,
         Both
     }
+    public enum ScoreUpdateType
+    {
+        Plus,
+        Mines
+    }
 }

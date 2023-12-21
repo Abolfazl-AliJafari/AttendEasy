@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AttendEasy.Domain
 {
-    public class Result
+    public class Result : IDisposable
     {
         public Result(bool success, string? message = "")
         {
@@ -16,6 +16,12 @@ namespace AttendEasy.Domain
 
         public bool Success { get; set; }
         public string? Message { get; set; }
+
+        public void Dispose()
+        {
+            Success = false;
+            Message = null;
+        }
     }
     public class Result<Generic> : Result
     {

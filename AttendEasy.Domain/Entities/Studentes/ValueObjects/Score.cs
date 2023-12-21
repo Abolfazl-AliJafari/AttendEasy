@@ -8,28 +8,35 @@ namespace AttendEasy.Domain.Entities.Studentes.ValueObjects
 {
     public class Score
     {
-        public Score(byte value)
+        public Score(float value)
         {
-            if (Validate(value))
-                Value = value;
+            using (var result = Validate(value))
+            {
+                if (result.Success)
+                    Value = value;
+                throw new ArgumentException(result.Message);
+            }
         }
-        public byte Value { get; private set; } = 20;
-        private bool Validate(byte value)
+        public float Value { get; private set; } = 20;
+        private Result Validate(float value)
         {
-            if (!CheckNumber(value))
-                return false;
-            return true;
+            using (var result = CheckNumber(value))
+            {
+                if (!result.Success)
+                    return new Result(false, result.Message);
+            }
+            return new Result(true);
         }
 
-        private bool CheckNumber(byte value)
+        private Result CheckNumber(float value)
         {
-            if(value < 0 || value > 20) return false;
-            return true;
+            if(value < 0 || value > 20) return new Result(false,"Not Valid Score");
+            return new Result(true);
         }
 
-        public static implicit operator byte(Score Score)
+        public static implicit operator float(Score Score)
             => Score.Value;
-        public static implicit operator Score(byte Value)
+        public static implicit operator Score(float Value)
              => new(Value);
     }
 }

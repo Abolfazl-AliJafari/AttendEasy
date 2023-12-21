@@ -10,25 +10,25 @@ namespace AttendEasy.Domain.Entities.Studentes.ValueObjects
     {
         public HomeNumber(string value)
         {
-            if (Validate(value))
-                Value = value;
+            using (var result = Validate(value))
+            {
+                if (result.Success)
+                    Value = value;
+                throw new ArgumentException(result.Message);
+            }
         }
-        public string Value { get; private set; } = string.Empty;
-        private bool Validate(string value)
+        public string Value { get; set; } = string.Empty;
+        private Result Validate(string value)
         {
-            if (!CheckLanguage(value))
-                return false;
-            if (!CheckFormat(value))
-                return false;
-            return true;
+            using (var result = CheckFormat(value))
+            {
+                if (!result.Success)
+                    return new Result(false, result.Message);
+            }
+            return new Result(true);
         }
 
-        private bool CheckFormat(string value)
-        {
-            throw new NotImplementedException();
-        }
-
-        private bool CheckLanguage(string value)
+        private Result CheckFormat(string value)
         {
             throw new NotImplementedException();
         }

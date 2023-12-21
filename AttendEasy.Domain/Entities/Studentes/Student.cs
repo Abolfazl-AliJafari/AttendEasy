@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,7 +20,7 @@ namespace AttendEasy.Domain.Entities.Studentes
             string lastName,
             DateTime registerDate,
             Class @class,
-            string profile = "",
+            string profile ,
             string mobileNumber = "",
             string homeNumber = "",
             string fatherName = "",
@@ -29,25 +30,29 @@ namespace AttendEasy.Domain.Entities.Studentes
             string motherMobile = "",
             DeadParentStatus deadParent = DeadParentStatus.None,
             bool leftParent = false,
-            string discription = "",
+            string description = "",
             string address = "")
         {
             Id = Guid.NewGuid();
             if(string.IsNullOrWhiteSpace(nationalCode))
             {
-                throw new Exception("NationalCode Is Required.");
+                throw new ArgumentException("NationalCode Is Required.");
             }
             if (string.IsNullOrWhiteSpace(studentCode))
             {
-                throw new Exception("StudentCode Is Required.");
+                throw new ArgumentException("StudentCode Is Required.");
             }
             if (string.IsNullOrWhiteSpace(FirstName))
             {
-                throw new Exception("FirstName Is Required.");
+                throw new ArgumentException("FirstName Is Required.");
             }
             if (string.IsNullOrWhiteSpace(LastName))
             {
-                throw new Exception("LastName Is Required.");
+                throw new ArgumentException("LastName Is Required.");
+            }
+            if (@class is null)
+            {
+                throw new ArgumentException("Class Is Required.");
             }
             NationalCode = nationalCode;
             StudentCode = studentCode;
@@ -63,7 +68,7 @@ namespace AttendEasy.Domain.Entities.Studentes
             MotherMobile = motherMobile;
             DeadParent = deadParent;
             LeftParent = leftParent;
-            Discription = discription;
+            Description= description;
             Address = address;
             RegisterDate = registerDate;
             Class = @class;
@@ -77,33 +82,126 @@ namespace AttendEasy.Domain.Entities.Studentes
         [Required]
         public StudentCode StudentCode { get;  } = string.Empty;
         [Required]
-        public FirstName FirstName { get; set; } = string.Empty;
+        public FirstName FirstName { get; private set; } = string.Empty;
         [Required]
-        public LastName LastName { get; set; } = string.Empty;
+        public LastName LastName { get; private set; } = string.Empty;
         //Url Of Profile Photo
-        public string? Profile { get; set; }
-        public MobileNumber? MobileNumber { get; set; }
-        public HomeNumber? HomeNumber { get; set; }
-        public FirstName? FatherName { get; set; }
-        public Job? FatherJob { get; set; }
-        public Job? MotherJob { get; set; }
-        public MobileNumber? FatherMobile { get; set; }
-        public MobileNumber? MotherMobile { get; set; }
+        public string? Profile { get; private set; }
+        public MobileNumber? MobileNumber { get; private set; }
+        public HomeNumber? HomeNumber { get; private set; }
+        public FirstName? FatherName { get; private set; }
+        public Job? FatherJob { get; private set; }
+        public Job? MotherJob { get; private set; }
+        public MobileNumber? FatherMobile { get; private set; }
+        public MobileNumber? MotherMobile { get; private set; }
         //Foat valedeyan
-        public DeadParentStatus? DeadParent { get; set; }
+        public DeadParentStatus? DeadParent { get; private set; }
         //Jodai valedeyan
-        public bool? LeftParent { get; set; }
+        public bool? LeftParent { get; private set; }
         //Extra Field For Others 
-        public string? Discription { get; set; }
-        public string? Address { get; set; }
+        public string? Description { get; private set; }
+        public string? Address { get; private set; }
         [Required]
         public Score Score { get; private set; } = 20;
         [Required]
-        public DateTime RegisterDate { get; set; }
+        public DateTime RegisterDate { get; private set; }
         //Class Of Student
         [Required]
-        public Class Class { get; set; } = new Class();
+        public Class Class { get; private set; }
 
-        public void 
+        public Result Update(
+            [Optional] Class @class,
+            DeadParentStatus? deadParent = null,
+            string firstName = "",
+            string lastName = "",
+            string profile = "",
+            string mobileNumber = "",
+            string homeNumber = "",
+            string fatherName = "",
+            string fatherJob = "",
+            string motherJob = "",
+            string fatherMobile = "",
+            string motherMobile = "",
+            bool leftParent = false,
+            string description = "",
+            string address = "")
+        {
+            if (@class is not null)
+            {
+                Class = @class;
+            }
+            if (!string.IsNullOrEmpty(firstName))
+            {
+                FirstName = firstName;
+            }
+            if (!string.IsNullOrEmpty(lastName))
+            {
+                LastName = lastName;
+            }
+            if (!string.IsNullOrEmpty(profile))
+            {
+                Profile = profile;
+            }
+            if (!string.IsNullOrEmpty(mobileNumber))
+            {
+                MobileNumber = mobileNumber;
+            }
+            if (!string.IsNullOrEmpty(homeNumber))
+            {
+                HomeNumber = homeNumber;
+            }
+            if (!string.IsNullOrEmpty(fatherName))
+            {
+                FatherName = fatherName;
+            }
+            if (!string.IsNullOrEmpty(fatherJob))
+            {
+                FatherJob = fatherJob;
+            }
+            if (!string.IsNullOrEmpty(motherJob))
+            {
+                MotherJob = motherJob;
+            }
+            if (!string.IsNullOrEmpty(fatherMobile))
+            {
+                FatherMobile = fatherMobile;
+            }
+            if (!string.IsNullOrEmpty(motherMobile))
+            {
+                MotherMobile = motherMobile;
+            }
+            if (deadParent is not null)
+            {
+                DeadParent = deadParent;
+            }
+            if (leftParent is not false)
+            {
+                LeftParent = leftParent;
+            }
+            if (!string.IsNullOrEmpty(description))
+            {
+                Description = description;
+            }
+            if (!string.IsNullOrEmpty(address))
+            {
+                Address = address;
+            }
+            return new Result(true);
+        }
+
+        public Result UpdateScore(float score , ScoreUpdateType scoreUpdateType)
+        {
+            if (score is not 0)
+            {
+                if (scoreUpdateType == ScoreUpdateType.Plus)
+                {
+                    Score += score;
+                    return new Result(true);
+                }
+                Score -= score;
+                return new Result(true);
+            }
+            return new Result(false,"UpdateScore Value Cant Be 0.");
+        }
     }
 }
