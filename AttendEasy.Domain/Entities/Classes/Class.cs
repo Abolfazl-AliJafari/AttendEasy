@@ -10,26 +10,42 @@ namespace AttendEasy.Domain.Entities.Classes
     public class Class
     {
         public Class(Level level,
-            Field? feild)
+            Field? field,
+            Tag? tag)
         {
             Id = Guid.NewGuid();
-            if(feild is not null)
+            if(field is not null)
             {
-                Title = string.Join(" ", level.Title, feild.Title);
+                Field = field;
+                if (tag is not null)
+                {
+                    Title = string.Join(" ", level.Title, field.Title, tag.Title);
+                }
+                else
+                {
+                    Title = string.Join(" ", level.Title, field.Title);
+                }
             }
             else
             {
-                Title = (string)level.Title;
+                if (tag is not null)
+                {
+                    Title = string.Join(" ", level.Title, tag.Title);
+                }
+                else
+                {
+                    Title = (string)level.Title;
+                }
             }
-            if(level is not null)
+            if (level is null)
             {
-                Level = level;
+                throw new Exception("Class Level Can Not Null.");
             }
-            else
+            if (tag is not null)
             {
-                throw new Exception("Level Cant Null.");
+                Tag = tag;
             }
-            Feild = feild;
+            Level= level;
         }
 
         [Required]
@@ -41,7 +57,7 @@ namespace AttendEasy.Domain.Entities.Classes
         //Level Of This Class For Example : 12,1 (پایه مورد نظر)
         public Level Level { get; private set; }
         //Feild Of This Class For Example : شبکه و نرم افزار (Optional)
-        public Field? Feild { get; private set; }
+        public Field? Field { get; private set; }
         //Tag Of This Class For Example : کلاس الف , کلاس ب (Optional)
         public Tag? Tag { get; private set; }
          

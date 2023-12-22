@@ -12,6 +12,10 @@ namespace AttendEasy.Domain.Entities.Tags
         public Tag(Title title)
         {
             Id = Guid.NewGuid();
+            if (title is null)
+            {
+                throw new ArgumentNullException("Tag Title Can Not Null.");
+            }
             Title = title;
         }
 

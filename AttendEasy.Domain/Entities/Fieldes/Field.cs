@@ -8,6 +8,10 @@ namespace AttendEasy.Domain.Entities.Fieldes
         public Field(Title title)
         {
             Id = Guid.NewGuid();
+            if(title is null)
+            {
+                throw new ArgumentNullException("Field Title Can Not Null.");
+            }
             Title = title;
         }
         [Required]
