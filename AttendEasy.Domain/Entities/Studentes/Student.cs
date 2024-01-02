@@ -1,6 +1,7 @@
 ﻿using AttendEasy.Domain.Entities.Classes;
 using AttendEasy.Domain.Entities.Studentes.Enums;
 using AttendEasy.Domain.Entities.Studentes.ValueObjects;
+using AttendEasy.Domain.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -23,9 +24,9 @@ namespace AttendEasy.Domain.Entities.Studentes
             string profile ,
             [Optional] MobileNumber mobileNumber ,
             [Optional] HomeNumber homeNumber ,
-            FirstName fatherName,
-            Job fatherJob,
-            Job motherJob,
+            [Optional] FirstName fatherName,
+            [Optional] Job fatherJob,
+            [Optional] Job motherJob,
             [Optional] MobileNumber fatherMobile,
             [Optional] MobileNumber motherMobile,
             DeadParentStatus deadParent = DeadParentStatus.None,
@@ -70,124 +71,123 @@ namespace AttendEasy.Domain.Entities.Studentes
             LeftParent = leftParent;
             Description= description;
             Address = address;
-            RegisterDate = registerDate;
             Class = @class;
-            RegisterDate = DateTime.Now;
+
         }
 
         [Required]
         public Guid Id { get;  }
         [Required]
-        public NationalCode NationalCode { get;  } = string.Empty;
+        public NationalCode NationalCode { get;  }
         [Required]
-        public StudentCode StudentCode { get;  } = string.Empty;
+        public StudentCode StudentCode { get;  } 
         [Required]
-        public FirstName FirstName { get; private set; } = string.Empty;
+        public FirstName FirstName { get;  set; }
         [Required]
-        public LastName LastName { get; private set; } = string.Empty;
+        public LastName LastName { get;  set; }
         //Url Of Profile Photo
-        public string? Profile { get; private set; }
-        public MobileNumber? MobileNumber { get; private set; }
-        public HomeNumber? HomeNumber { get; private set; }
-        public FirstName? FatherName { get; private set; }
-        public Job? FatherJob { get; private set; }
-        public Job? MotherJob { get; private set; }
-        public MobileNumber? FatherMobile { get; private set; }
-        public MobileNumber? MotherMobile { get; private set; }
+        public string? Profile { get;  set; }
+        public MobileNumber? MobileNumber { get;  set; }
+        public HomeNumber? HomeNumber { get;  set; }
+        public FirstName? FatherName { get;  set; }
+        public Job? FatherJob { get;  set; }
+        public Job? MotherJob { get;  set; }
+        public MobileNumber? FatherMobile { get;  set; }
+        public MobileNumber? MotherMobile { get;  set; }
         //Foat valedeyan
-        public DeadParentStatus? DeadParent { get; private set; }
+        public DeadParentStatus? DeadParent { get; set; }
         //Jodai valedeyan
-        public bool? LeftParent { get; private set; }
+        public bool? LeftParent { get; set; }
         //Extra Field For Others 
-        public string? Description { get; private set; }
-        public string? Address { get; private set; }
+        public string? Description { get; set; }
+        public string? Address { get;  set; }
         [Required]
         public Score Score { get; private set; } = 20;
-        [Required]
-        public DateTime RegisterDate { get; private set; }
+        //[Required]
+        //public DateTime RegisterDate { get;}
         //Class Of Student
         [Required]
-        public Class Class { get; private set; }
+        public Class Class { get; set; }
 
-        public Result Update(
-            [Optional] Class @class,
-            DeadParentStatus? deadParent = null,
-            string firstName = "",
-            string lastName = "",
-            string profile = "",
-            string mobileNumber = "",
-            string homeNumber = "",
-            string fatherName = "",
-            string fatherJob = "",
-            string motherJob = "",
-            string fatherMobile = "",
-            string motherMobile = "",
-            bool leftParent = false,
-            string description = "",
-            string address = "")
-        {
-            if (@class is not null)
-            {
-                Class = @class;
-            }
-            if (!string.IsNullOrEmpty(firstName))
-            {
-                FirstName = firstName;
-            }
-            if (!string.IsNullOrEmpty(lastName))
-            {
-                LastName = lastName;
-            }
-            if (!string.IsNullOrEmpty(profile))
-            {
-                Profile = profile;
-            }
-            if (!string.IsNullOrEmpty(mobileNumber))
-            {
-                MobileNumber = mobileNumber;
-            }
-            if (!string.IsNullOrEmpty(homeNumber))
-            {
-                HomeNumber = homeNumber;
-            }
-            if (!string.IsNullOrEmpty(fatherName))
-            {
-                FatherName = fatherName;
-            }
-            if (!string.IsNullOrEmpty(fatherJob))
-            {
-                FatherJob = fatherJob;
-            }
-            if (!string.IsNullOrEmpty(motherJob))
-            {
-                MotherJob = motherJob;
-            }
-            if (!string.IsNullOrEmpty(fatherMobile))
-            {
-                FatherMobile = fatherMobile;
-            }
-            if (!string.IsNullOrEmpty(motherMobile))
-            {
-                MotherMobile = motherMobile;
-            }
-            if (deadParent is not null)
-            {
-                DeadParent = deadParent;
-            }
-            if (leftParent is not false)
-            {
-                LeftParent = leftParent;
-            }
-            if (!string.IsNullOrEmpty(description))
-            {
-                Description = description;
-            }
-            if (!string.IsNullOrEmpty(address))
-            {
-                Address = address;
-            }
-            return new Result(true);
-        }
+        //public Result Update(
+        //    [Optional] Class @class,
+        //    DeadParentStatus? deadParent = null,
+        //    string firstName = "",
+        //    string lastName = "",
+        //    string profile = "",
+        //    string mobileNumber = "",
+        //    string homeNumber = "",
+        //    string fatherName = "",
+        //    string fatherJob = "",
+        //    string motherJob = "",
+        //    string fatherMobile = "",
+        //    string motherMobile = "",
+        //    bool leftParent = false,
+        //    string description = "",
+        //    string address = "")
+        //{
+        //    if (@class is not null)
+        //    {
+        //        Class = @class;
+        //    }
+        //    if (!string.IsNullOrEmpty(firstName))
+        //    {
+        //        FirstName = firstName;
+        //    }
+        //    if (!string.IsNullOrEmpty(lastName))
+        //    {
+        //        LastName = lastName;
+        //    }
+        //    if (!string.IsNullOrEmpty(profile))
+        //    {
+        //        Profile = profile;
+        //    }
+        //    if (!string.IsNullOrEmpty(mobileNumber))
+        //    {
+        //        MobileNumber = mobileNumber;
+        //    }
+        //    if (!string.IsNullOrEmpty(homeNumber))
+        //    {
+        //        HomeNumber = homeNumber;
+        //    }
+        //    if (!string.IsNullOrEmpty(fatherName))
+        //    {
+        //        FatherName = fatherName;
+        //    }
+        //    if (!string.IsNullOrEmpty(fatherJob))
+        //    {
+        //        FatherJob = fatherJob;
+        //    }
+        //    if (!string.IsNullOrEmpty(motherJob))
+        //    {
+        //        MotherJob = motherJob;
+        //    }
+        //    if (!string.IsNullOrEmpty(fatherMobile))
+        //    {
+        //        FatherMobile = fatherMobile;
+        //    }
+        //    if (!string.IsNullOrEmpty(motherMobile))
+        //    {
+        //        MotherMobile = motherMobile;
+        //    }
+        //    if (deadParent is not null)
+        //    {
+        //        DeadParent = deadParent;
+        //    }
+        //    if (leftParent is not false)
+        //    {
+        //        LeftParent = leftParent;
+        //    }
+        //    if (!string.IsNullOrEmpty(description))
+        //    {
+        //        Description = description;
+        //    }
+        //    if (!string.IsNullOrEmpty(address))
+        //    {
+        //        Address = address;
+        //    }
+        //    return new Result(true);
+        //}
 
         public Result UpdateScore(float score , ScoreUpdateType scoreUpdateType)
         {

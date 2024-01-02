@@ -1,4 +1,6 @@
-﻿namespace AttendEasy.Domain.Entities.Fieldes.ValueObjects
+﻿using AttendEasy.Domain.Helpers;
+
+namespace AttendEasy.Domain.Entities.Fieldes.ValueObjects
 {
     public class Title
     {

@@ -1,4 +1,5 @@
 ﻿using AttendEasy.Domain.Entities.Studentes.ValueObjects;
+using AttendEasy.Domain.Helpers;
 
 namespace AttendEasy.Domain.Entities.Leveles.ValueObjects
 {

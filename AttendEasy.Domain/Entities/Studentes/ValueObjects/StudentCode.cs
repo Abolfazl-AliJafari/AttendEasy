@@ -1,4 +1,6 @@
-﻿namespace AttendEasy.Domain.Entities.Studentes.ValueObjects
+﻿using AttendEasy.Domain.Helpers;
+
+namespace AttendEasy.Domain.Entities.Studentes.ValueObjects
 {
     public class StudentCode
     {

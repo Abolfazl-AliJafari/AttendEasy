@@ -1,4 +1,5 @@
 ﻿using AttendEasy.Domain.Entities.Studentes.ValueObjects;
+using AttendEasy.Domain.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

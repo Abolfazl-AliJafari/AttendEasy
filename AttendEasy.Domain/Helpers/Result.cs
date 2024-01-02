@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AttendEasy.Domain
+namespace AttendEasy.Domain.Helpers
 {
     public class Result : IDisposable
     {
@@ -27,8 +27,8 @@ namespace AttendEasy.Domain
     {
         public Result(bool success, Generic data, string? message = "") : base(success, message)
         {
-            Data= data;
+            Data = data;
         }
-        public Generic Data{ get; set; }
+        public Generic Data { get; set; }
     }
 }

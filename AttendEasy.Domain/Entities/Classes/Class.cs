@@ -3,6 +3,7 @@ using AttendEasy.Domain.Entities.Fieldes;
 using AttendEasy.Domain.Entities.Leveles;
 using AttendEasy.Domain.Entities.Tags;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection.Emit;
 using System.Runtime.InteropServices;
 
 namespace AttendEasy.Domain.Entities.Classes
@@ -61,15 +62,31 @@ namespace AttendEasy.Domain.Entities.Classes
         //Tag Of This Class For Example : کلاس الف , کلاس ب (Optional)
         public Tag? Tag { get; private set; }
          
-        public void UpdateTitle(string title)
+        public void UpdateTitle(Level level,
+            Field? field,
+            Tag? tag)
         {
-            if(title is not null)
+            if (field is not null)
             {
-                Title = title;
+                if (tag is not null)
+                {
+                    Title = string.Join(" ", level.Title, field.Title, tag.Title);
+                }
+                else
+                {
+                    Title = string.Join(" ", level.Title, field.Title);
+                }
             }
             else
             {
-                throw new Exception("New Title Cant Empty.");
+                if (tag is not null)
+                {
+                    Title = string.Join(" ", level.Title, tag.Title);
+                }
+                else
+                {
+                    Title = (string)level.Title;
+                }
             }
         }
     }

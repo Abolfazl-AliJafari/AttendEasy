@@ -1,4 +1,6 @@
-﻿namespace AttendEasy.Domain.Entities.Leveles.ValueObjects
+﻿using AttendEasy.Domain.Helpers;
+
+namespace AttendEasy.Domain.Entities.Leveles.ValueObjects
 {
     public class Title
     {
