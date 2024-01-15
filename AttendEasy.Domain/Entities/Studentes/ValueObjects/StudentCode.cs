@@ -1,4 +1,5 @@
 ﻿using AttendEasy.Domain.Helpers;
+using AttendEasy.Domain.Utilities;
 
 namespace AttendEasy.Domain.Entities.Studentes.ValueObjects
 {
@@ -6,7 +7,7 @@ namespace AttendEasy.Domain.Entities.Studentes.ValueObjects
     {
         public StudentCode(string value)
         {
-            using (var result = Validate(value))
+            using (var result = Validations.CheckValidFormatNationalCode(nameof(StudentCode),value))
             {
                 if (result.Success)
                     Value = value;
@@ -14,20 +15,6 @@ namespace AttendEasy.Domain.Entities.Studentes.ValueObjects
             }
         }
         public string Value { get; } = string.Empty;
-        private Result Validate(string value)
-        {
-            using (var result = CheckFormat(value))
-            {
-                if (!result.Success)
-                    return new Result(false, result.Message);
-            }
-            return new Result(true);
-        }
-
-        private Result CheckFormat(string value)
-        {
-            throw new NotImplementedException();
-        }
 
         public static implicit operator string(StudentCode StudentCode)
             => StudentCode.Value;

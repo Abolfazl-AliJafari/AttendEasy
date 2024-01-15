@@ -1,5 +1,5 @@
 ﻿using AttendEasy.Domain.Entities.Classes;
-using AttendEasy.Domain.Entities.Studentes.Enums;
+using AttendEasy.Domain.Enumerations;
 using AttendEasy.Domain.Entities.Studentes.ValueObjects;
 using AttendEasy.Domain.Helpers;
 using System;
@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace AttendEasy.Domain.Entities.Studentes
 {
@@ -78,36 +79,57 @@ namespace AttendEasy.Domain.Entities.Studentes
         [Required]
         public Guid Id { get;  }
         [Required]
+        [DisplayName("کد ملی")]
         public NationalCode NationalCode { get;  }
         [Required]
+        [DisplayName("کد دانش آموزی")]
         public StudentCode StudentCode { get;  } 
         [Required]
+        [DisplayName("نام")]
         public FirstName FirstName { get;  set; }
         [Required]
+        [DisplayName("نام خانوادگی")]
         public LastName LastName { get;  set; }
         //Url Of Profile Photo
+        [DisplayName("پروفایل")]
         public string? Profile { get;  set; }
+        [DisplayName("شماره تلفن همراه")]
         public MobileNumber? MobileNumber { get;  set; }
+        [DisplayName("شماره تلفن ثابت")]
         public HomeNumber? HomeNumber { get;  set; }
+        [DisplayName("نام پدر")]
         public FirstName? FatherName { get;  set; }
+        [DisplayName("شغل پدر")]
         public Job? FatherJob { get;  set; }
+        [DisplayName("شغل مادر")]
         public Job? MotherJob { get;  set; }
+        [DisplayName("شماره موبایل پدر")]
         public MobileNumber? FatherMobile { get;  set; }
+        [DisplayName("شماره موبایل مادر")]
         public MobileNumber? MotherMobile { get;  set; }
         //Foat valedeyan
+        [DisplayName("فوت والدین")]
         public DeadParentStatus? DeadParent { get; set; }
         //Jodai valedeyan
+        [DisplayName("جدایی والدین")]
         public bool? LeftParent { get; set; }
         //Extra Field For Others 
+        [DisplayName("توضیحات بیشتر")]
         public string? Description { get; set; }
+        [DisplayName("آدرس محل سکونت")]
         public string? Address { get;  set; }
         [Required]
+        [DisplayName("نمره انضباطی")]
         public Score Score { get; private set; } = 20;
         //[Required]
         //public DateTime RegisterDate { get;}
         //Class Of Student
         [Required]
+        [DisplayName("کلاس")]
         public Class Class { get; set; }
+
+        [DisplayName("اثر انگشت")]
+        public byte[] FingerPrint { get; set; }
 
         //public Result Update(
         //    [Optional] Class @class,
@@ -188,6 +210,14 @@ namespace AttendEasy.Domain.Entities.Studentes
         //    }
         //    return new Result(true);
         //}
+
+
+        public Result SetFingerPrint(byte[] fingerPrint)
+        {
+            //validate FingerPrint
+            FingerPrint= fingerPrint;
+            return new Result(true);
+        }
 
         public Result UpdateScore(float score , ScoreUpdateType scoreUpdateType)
         {

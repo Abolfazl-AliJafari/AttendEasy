@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AttendEasy.Domain.Helpers;
+using AttendEasy.Domain.Utilities;
 
 namespace AttendEasy.Domain.Entities.Studentes.ValueObjects
 {
@@ -11,7 +12,7 @@ namespace AttendEasy.Domain.Entities.Studentes.ValueObjects
     {
         public HomeNumber(string value)
         {
-            using (var result = Validate(value))
+            using (var result = Validations.CheckValidFormatPhoneNumber(nameof(MobileNumber), value))
             {
                 if (result.Success)
                     Value = value;
@@ -19,20 +20,6 @@ namespace AttendEasy.Domain.Entities.Studentes.ValueObjects
             }
         }
         public string Value { get; set; } = string.Empty;
-        private Result Validate(string value)
-        {
-            using (var result = CheckFormat(value))
-            {
-                if (!result.Success)
-                    return new Result(false, result.Message);
-            }
-            return new Result(true);
-        }
-
-        private Result CheckFormat(string value)
-        {
-            throw new NotImplementedException();
-        }
 
         public static implicit operator string(HomeNumber HomeNumber)
             => HomeNumber.Value;

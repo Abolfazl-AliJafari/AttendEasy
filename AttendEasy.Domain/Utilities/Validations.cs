@@ -1,6 +1,7 @@
 ﻿using AttendEasy.Domain.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -46,12 +47,31 @@ namespace AttendEasy.Domain.Utilities
             }
             return new Result(true);
         }
-        public static Result CheckValidFormatPhoneNumber(string fieldName,string value)
+        public static Result CheckValidFormatPhoneNumber(string fieldName, string value, bool isMobile = false)
         {
-            if (value[0] is not '0')
+            if (isMobile)
             {
-                return new Result();
+                if (!Regex.IsMatch(value, ("^09[0-9]{9}$")))
+                {
+                    return new Result(false, $"Pleaze Enter {fieldName} With Correct Format.");
+                }
             }
+            else
+            {
+                if (!Regex.IsMatch(value, ("^0[0-9]{10}$")))
+                {
+                    return new Result(false, $"Pleaze Enter {fieldName} With Correct Format.");
+                }
+            }
+            return new Result(true);
+        }
+        public static Result CheckValidFormatNationalCode(string fieldName,string value)
+        {
+            if (!Regex.IsMatch(value, "^[0-9]{10}$"))
+            {
+                return new Result(false, $"Pleaze Enter {fieldName} With Correct Format.");
+            }
+            return new Result(true);
         }
     }
 }

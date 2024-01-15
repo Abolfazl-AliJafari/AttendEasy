@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using AttendEasy.Domain.Entities.Fieldes.ValueObjects;
 
 namespace AttendEasy.Domain.Entities.Fieldes
@@ -18,6 +19,7 @@ namespace AttendEasy.Domain.Entities.Fieldes
         public Guid Id { get; }
         //Title Of Feild for Example : شبکه و نرم افزار ,  ریاضی فیزیک
         [Required]
+        [DisplayName("عنوان")]
         public Title Title { get; private set; }
     }
 }

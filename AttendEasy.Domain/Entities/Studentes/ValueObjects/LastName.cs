@@ -1,4 +1,5 @@
 ﻿using AttendEasy.Domain.Helpers;
+using AttendEasy.Domain.Utilities;
 
 namespace AttendEasy.Domain.Entities.Studentes.ValueObjects
 {
@@ -18,16 +19,22 @@ namespace AttendEasy.Domain.Entities.Studentes.ValueObjects
         public string Value { get; set; } = string.Empty;
         private Result Validate(string value)
         {
-            using (var result = CheckLanguage(value))
+            using (var result = Validations.CheckWhiteSpaceOrEmpty(nameof(FirstName), value))
             {
                 if (!result.Success)
                     return new Result(false, result.Message);
             }
-            using (var result = CheckFormat(value))
+            //using (var result = CheckFormat(value))
+            //{
+            //    if (!result.Success)
+            //        return new Result(false, result.Message);
+            //}
+            using (var result = Validations.CheckPersianLanguage(nameof(FirstName), value))
             {
                 if (!result.Success)
                     return new Result(false, result.Message);
             }
+
             return new Result(true);
         }
 

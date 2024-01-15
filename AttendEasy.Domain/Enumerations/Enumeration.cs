@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AttendEasy.Domain.Entities.Studentes.Enums
+namespace AttendEasy.Domain.Enumerations
 {
     public enum DeadParentStatus
     {
