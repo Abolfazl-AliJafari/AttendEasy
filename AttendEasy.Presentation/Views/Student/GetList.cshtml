@@ -59,7 +59,7 @@
                 @Html.DisplayNameFor(model => model.LeftParent)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Discription)
+                @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Address)
@@ -67,9 +67,8 @@
             <th>
                 @Html.DisplayNameFor(model => model.Score)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RegisterDate)
-            </th>
+           docker ps -a
+
             <th></th>
         </tr>
     </thead>
@@ -122,7 +121,7 @@
                 @Html.DisplayFor(modelItem => item.LeftParent)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Discription)
+                @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Address)
@@ -130,9 +129,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Score)
             </td>
-            <td>
+            @* <td>
                 @Html.DisplayFor(modelItem => item.RegisterDate)
-            </td>
+            </td> *@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
