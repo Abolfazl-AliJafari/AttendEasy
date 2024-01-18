@@ -131,6 +131,8 @@ namespace AttendEasy.Domain.Entities.Studentes
         [DisplayName("اثر انگشت")]
         public byte[] FingerPrint { get; set; }
 
+        //test
+
         //public Result Update(
         //    [Optional] Class @class,
         //    DeadParentStatus? deadParent = null,
