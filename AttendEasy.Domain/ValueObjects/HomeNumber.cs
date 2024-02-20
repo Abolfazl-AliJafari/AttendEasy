@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using AttendEasy.Domain.Helpers;
 using AttendEasy.Domain.Utilities;
 
-namespace AttendEasy.Domain.Entities.Studentes.ValueObjects
+namespace AttendEasy.Domain.ValueObjects
 {
-    public class MobileNumber
+    public class HomeNumber
     {
-        public MobileNumber(string value)
+        public HomeNumber(string value)
         {
-            using (var result = Validations.CheckValidFormatPhoneNumber(nameof(MobileNumber),value,true))
+            using (var result = Validations.CheckValidFormatPhoneNumber(nameof(HomeNumber), value))
             {
                 if (result.Success)
                     Value = value;
@@ -21,10 +21,9 @@ namespace AttendEasy.Domain.Entities.Studentes.ValueObjects
         }
         public string Value { get; set; } = string.Empty;
 
-
-        public static implicit operator string(MobileNumber MobileNumber)
-            => MobileNumber.Value;
-        public static implicit operator MobileNumber(string Value)
+        public static implicit operator string(HomeNumber HomeNumber)
+            => HomeNumber.Value;
+        public static implicit operator HomeNumber(string Value)
              => new(Value);
     }
 }

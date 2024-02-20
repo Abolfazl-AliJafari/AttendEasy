@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AttendEasy.Domain.Helpers;
 
-namespace AttendEasy.Domain.Entities.Studentes.ValueObjects
+namespace AttendEasy.Domain.ValueObjects
 {
     public class Score
     {

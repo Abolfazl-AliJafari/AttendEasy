@@ -1,11 +1,12 @@
-﻿using AttendEasy.Domain.Helpers;
+﻿using System.Text.RegularExpressions;
+using AttendEasy.Domain.Helpers;
 using AttendEasy.Domain.Utilities;
 
-namespace AttendEasy.Domain.Entities.Studentes.ValueObjects
+namespace AttendEasy.Domain.ValueObjects
 {
-    public class LastName
+    public class FirstName
     {
-        public LastName(string value)
+        public FirstName(string value)
         {
             using (var result = Validate(value))
             {
@@ -13,13 +14,11 @@ namespace AttendEasy.Domain.Entities.Studentes.ValueObjects
                     Value = value;
                 throw new ArgumentException(result.Message);
             }
-
         }
-
         public string Value { get; set; } = string.Empty;
         private Result Validate(string value)
         {
-            using (var result = Validations.CheckWhiteSpaceOrEmpty(nameof(FirstName), value))
+            using (var result = Validations.CheckWhiteSpaceOrEmpty(nameof(FirstName),value))
             {
                 if (!result.Success)
                     return new Result(false, result.Message);
@@ -32,25 +31,28 @@ namespace AttendEasy.Domain.Entities.Studentes.ValueObjects
             using (var result = Validations.CheckPersianLanguage(nameof(FirstName), value))
             {
                 if (!result.Success)
-                    return new Result(false, result.Message);
+                    return new Result(false,result.Message);
             }
 
             return new Result(true);
         }
 
-        private Result CheckFormat(string value)
-        {
-            throw new NotImplementedException();
-        }
+        //private Result CheckFormat(string value)
+        //{
+        //    foreach (char @char in value)
+        //    {
+        //        if(@char is ' ')
+        //        {
 
-        private Result CheckLanguage(string value)
-        {
-            throw new NotImplementedException();
-        }
+        //        }
+        //    }
+        //}
 
-        public static implicit operator string(LastName LastName)
-            => LastName.Value;
-        public static implicit operator LastName(string Value)
+      
+
+        public static implicit operator string(FirstName FirstName)
+            => FirstName.Value;
+        public static implicit operator FirstName(string Value)
              => new(Value);
     }
 }

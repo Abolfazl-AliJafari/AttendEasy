@@ -90,6 +90,9 @@ namespace AttendEasy.Domain.Entities.Studentes
         [Required]
         [DisplayName("نام خانوادگی")]
         public LastName LastName { get;  set; }
+        [Required]
+        [DisplayName("تاریخ تولد")]
+        public BirthDayDate BirthDayDate { get; set; }
         //Url Of Profile Photo
         [DisplayName("پروفایل")]
         public string? Profile { get;  set; }
@@ -121,6 +124,14 @@ namespace AttendEasy.Domain.Entities.Studentes
         [Required]
         [DisplayName("نمره انضباطی")]
         public Score Score { get; private set; } = 20;
+
+        [Required]
+        [DisplayName("دین")]
+        public Religion Religion { get; set; }
+
+        [Required]
+        [DisplayName("ملیت")]
+        public Nationality Nationality { get; set; }
         //[Required]
         //public DateTime RegisterDate { get;}
         //Class Of Student
@@ -130,8 +141,6 @@ namespace AttendEasy.Domain.Entities.Studentes
 
         [DisplayName("اثر انگشت")]
         public byte[] FingerPrint { get; set; }
-
-        //test
 
         //public Result Update(
         //    [Optional] Class @class,
@@ -235,5 +244,6 @@ namespace AttendEasy.Domain.Entities.Studentes
             }
             return new Result(false,"UpdateScore Value Cant Be 0.");
         }
+
     }
 }

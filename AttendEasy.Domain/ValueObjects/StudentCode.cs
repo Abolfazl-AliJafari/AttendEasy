@@ -1,7 +1,7 @@
 ﻿using AttendEasy.Domain.Helpers;
 using AttendEasy.Domain.Utilities;
 
-namespace AttendEasy.Domain.Entities.Studentes.ValueObjects
+namespace AttendEasy.Domain.ValueObjects
 {
     public class StudentCode
     {

@@ -1,6 +1,6 @@
 ﻿using AttendEasy.Domain.Helpers;
 
-namespace AttendEasy.Domain.Entities.Fieldes.ValueObjects
+namespace AttendEasy.Domain.ValueObjects
 {
     public class Title
     {

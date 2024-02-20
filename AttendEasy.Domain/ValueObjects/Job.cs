@@ -5,20 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using AttendEasy.Domain.Helpers;
 
-namespace AttendEasy.Domain.Entities.Tags.ValueObjects
+namespace AttendEasy.Domain.ValueObjects
 {
-    public class Title
+    public class Job
     {
-        public Title(string value)
+        public Job(string value)
         {
             using (var result = Validate(value))
             {
                 if (result.Success)
                     Value = value;
-                throw new Exception(result.Message);
+                throw new ArgumentException(result.Message);
             }
         }
-        public string Value { get; private set; } = string.Empty;
+        public string Value { get; set; } = string.Empty;
         private Result Validate(string value)
         {
             using (var result = CheckLanguage(value))
@@ -44,9 +44,9 @@ namespace AttendEasy.Domain.Entities.Tags.ValueObjects
             throw new NotImplementedException();
         }
 
-        public static implicit operator string(Title Title)
-            => Title.Value;
-        public static implicit operator Title(string Value)
+        public static implicit operator string(Job Job)
+            => Job.Value;
+        public static implicit operator Job(string Value)
              => new(Value);
     }
 }
