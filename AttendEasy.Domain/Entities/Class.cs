@@ -1,13 +1,11 @@
-﻿using AttendEasy.Domain.Entities.Classes.ValueObjects;
-using AttendEasy.Domain.Entities.Fieldes;
-using AttendEasy.Domain.Entities.Leveles;
-using AttendEasy.Domain.Entities.Tags;
+﻿using AttendEasy.Domain.ValueObjects;
+using AttendEasy.Domain.ValueObjects;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection.Emit;
 using System.Runtime.InteropServices;
 
-namespace AttendEasy.Domain.Entities.Classes
+namespace AttendEasy.Domain.Entities
 {
     public class Class
     {

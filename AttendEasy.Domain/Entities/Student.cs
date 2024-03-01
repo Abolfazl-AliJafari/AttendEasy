@@ -1,6 +1,6 @@
-﻿using AttendEasy.Domain.Entities.Classes;
+﻿
 using AttendEasy.Domain.Enumerations;
-using AttendEasy.Domain.Entities.Studentes.ValueObjects;
+using AttendEasy.Domain.ValueObjects;
 using AttendEasy.Domain.Helpers;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 
-namespace AttendEasy.Domain.Entities.Studentes
+namespace AttendEasy.Domain.Entities
 {
     public class Student
     {

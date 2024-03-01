@@ -1,5 +1,5 @@
 ﻿using System;
-namespace AttendEasy.Domain.Entities.AttendAndAbsenceStatuss
+namespace AttendEasy.Domain.Entities
 {
 	public class AttendAndAbsenceStatus
 	{

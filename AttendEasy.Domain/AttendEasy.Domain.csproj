@@ -7,23 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Entities\StudentStatuss\" />
     <None Remove="ValueObjects\" />
-    <None Remove="Entities\Settings\" />
-    <None Remove="Entities\DisciplinaryReasons\" />
-    <None Remove="Entities\DisciplinaryStatuss\" />
-    <None Remove="Entities\AttendAndAbsenceStatuss\" />
-    <None Remove="Entities\AttendAndAbsenceReasons\" />
-    <None Remove="Entities\Users\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Entities\StudentStatuss\" />
     <Folder Include="ValueObjects\" />
-    <Folder Include="Entities\Settings\" />
-    <Folder Include="Entities\DisciplinaryReasons\" />
-    <Folder Include="Entities\DisciplinaryStatuss\" />
-    <Folder Include="Entities\AttendAndAbsenceStatuss\" />
-    <Folder Include="Entities\AttendAndAbsenceReasons\" />
-    <Folder Include="Entities\Users\" />
   </ItemGroup>
 </Project>

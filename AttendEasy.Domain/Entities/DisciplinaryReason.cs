@@ -1,5 +1,5 @@
 ﻿using System;
-namespace AttendEasy.Domain.Entities.DisciplinaryReasons
+namespace AttendEasy.Domain.Entities
 {
 	public class DisciplinaryReason
 	{

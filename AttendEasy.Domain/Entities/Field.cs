@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using AttendEasy.Domain.Entities.Fieldes.ValueObjects;
+using AttendEasy.Domain.ValueObjects;
 
-namespace AttendEasy.Domain.Entities.Fieldes
+namespace AttendEasy.Domain.Entities
 {
     public class Field
     {

@@ -1,4 +1,4 @@
-﻿using AttendEasy.Domain.Entities.Leveles.ValueObjects;
+﻿using AttendEasy.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AttendEasy.Domain.Entities.Leveles
+namespace AttendEasy.Domain.Entities
 {
     public class Level
     {
