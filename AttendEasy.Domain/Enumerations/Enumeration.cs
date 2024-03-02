@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace AttendEasy.Domain.Enumerations
 {
@@ -17,5 +13,18 @@ namespace AttendEasy.Domain.Enumerations
     {
         Plus,
         Mines
+    }
+    public enum DisciplinaryType
+    {
+        Encouragement,
+        Punishment
+    }
+    public enum AttendAndAbsenceType
+    {
+        Login,
+        Exit,
+        Delay,
+        Absence,
+        Attend
     }
 }

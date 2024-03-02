@@ -5,6 +5,7 @@ namespace AttendEasy.Domain.Entities
 	{
 		public DisciplinaryStatus()
 		{
+
 		}
 	}
 }

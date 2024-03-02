@@ -19,6 +19,24 @@ namespace AttendEasy.Domain.Entities
 		public string LastName { get; private set; }
 		public string UserName { get; private set; }
 		public string PassWord { get; private set; }
-	}
+
+
+		public void ChangeFirstName(string firstName)
+		{
+			FirstName = firstName;
+		}
+        public void ChangeLastName(string lastName)
+        {
+            LastName = lastName;
+        }
+        public void ChangeUseName(string userName)
+        {
+            UserName = userName;
+        }
+        public void ChangePassWord(string newPassWord)
+        {
+            PassWord = newPassWord;
+        }
+    }
 }
 

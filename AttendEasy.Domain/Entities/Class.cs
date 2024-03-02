@@ -1,9 +1,6 @@
 ﻿using AttendEasy.Domain.ValueObjects;
-using AttendEasy.Domain.ValueObjects;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Reflection.Emit;
-using System.Runtime.InteropServices;
 
 namespace AttendEasy.Domain.Entities
 {
