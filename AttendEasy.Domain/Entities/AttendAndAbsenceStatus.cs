@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using AttendEasy.Domain.Enumerations;
 
 namespace AttendEasy.Domain.Entities
@@ -6,7 +7,7 @@ namespace AttendEasy.Domain.Entities
 	public class AttendAndAbsenceStatus : Entity<Guid>
 	{
 		public AttendAndAbsenceStatus(DateTime date,
-			DateTime time,
+			TimeSpan time,
 			Student student,
             AttendAndAbsenceType type,
 
@@ -20,10 +21,12 @@ namespace AttendEasy.Domain.Entities
 			Description = description;
 		}
 
+		[Column(TypeName = "Date")]
 		public DateTime Date { get; init; }
-		public DateTime Time { get; init; }
+		[Column(TypeName = "Time(0)")]
+		public TimeSpan Time { get; init; }
 		public Student Student { get; init; }
-        public AttendAndAbsenceType Type { get; private set; }
+		public AttendAndAbsenceType Type { get; private set; }
 		public AttendAndAbsenceReason Reason { get; private set; }
 		public string? Description { get; private set; }
 

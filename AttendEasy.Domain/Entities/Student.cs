@@ -44,11 +44,11 @@ namespace AttendEasy.Domain.Entities
             {
                 throw new ArgumentException("StudentCode Is Required.");
             }
-            if (string.IsNullOrWhiteSpace(FirstName))
+            if (string.IsNullOrWhiteSpace(firstName))
             {
                 throw new ArgumentException("FirstName Is Required.");
             }
-            if (string.IsNullOrWhiteSpace(LastName))
+            if (string.IsNullOrWhiteSpace(lastName))
             {
                 throw new ArgumentException("LastName Is Required.");
             }
@@ -86,61 +86,65 @@ namespace AttendEasy.Domain.Entities
         public StudentCode StudentCode { get;  } 
         [Required]
         [DisplayName("نام")]
-        public FirstName FirstName { get;  set; }
+        public FirstName FirstName { get;  private set; }
         [Required]
         [DisplayName("نام خانوادگی")]
-        public LastName LastName { get;  set; }
+        public LastName LastName { get; private set; }
         [Required]
         [DisplayName("تاریخ تولد")]
-        public BirthDayDate BirthDayDate { get; set; }
+        public BirthDayDate BirthDayDate { get; private set; }
         //Url Of Profile Photo
         [DisplayName("پروفایل")]
-        public string? Profile { get;  set; }
+        public string? Profile { get; private set; }
         [DisplayName("شماره تلفن همراه")]
-        public MobileNumber? MobileNumber { get;  set; }
+        public MobileNumber? MobileNumber { get; private set; }
         [DisplayName("شماره تلفن ثابت")]
-        public HomeNumber? HomeNumber { get;  set; }
+        public HomeNumber? HomeNumber { get; private set; }
         [DisplayName("نام پدر")]
-        public FirstName? FatherName { get;  set; }
+        public FirstName? FatherName { get; private set; }
         [DisplayName("شغل پدر")]
-        public Job? FatherJob { get;  set; }
+        public Job? FatherJob { get; private set; }
         [DisplayName("شغل مادر")]
-        public Job? MotherJob { get;  set; }
+        public Job? MotherJob { get; private set; }
         [DisplayName("شماره موبایل پدر")]
-        public MobileNumber? FatherMobile { get;  set; }
+        public MobileNumber? FatherMobile { get; private set; }
         [DisplayName("شماره موبایل مادر")]
-        public MobileNumber? MotherMobile { get;  set; }
+        public MobileNumber? MotherMobile { get; private set; }
         //Foat valedeyan
         [DisplayName("فوت والدین")]
-        public DeadParentStatus? DeadParent { get; set; }
+        public DeadParentStatus? DeadParent { get; private set; }
         //Jodai valedeyan
         [DisplayName("جدایی والدین")]
-        public bool? LeftParent { get; set; }
+        public bool? LeftParent { get; private set; }
         //Extra Field For Others 
         [DisplayName("توضیحات بیشتر")]
-        public string? Description { get; set; }
+        public string? Description { get; private set; }
         [DisplayName("آدرس محل سکونت")]
-        public string? Address { get;  set; }
+        public string? Address { get; private set; }
         [Required]
         [DisplayName("نمره انضباطی")]
         public Score Score { get; private set; } = 20;
 
         [Required]
         [DisplayName("دین")]
-        public Religion Religion { get; set; }
+        public Religion Religion { get; private set; }
 
         [Required]
         [DisplayName("ملیت")]
-        public Nationality Nationality { get; set; }
+        public Nationality Nationality { get; private set; }
         //[Required]
         //public DateTime RegisterDate { get;}
         //Class Of Student
-        [Required]
-        [DisplayName("کلاس")]
-        public Class Class { get; set; }
-
         [DisplayName("اثر انگشت")]
-        public byte[] FingerPrint { get; set; }
+        public byte[] FingerPrint { get; private set; }
+
+        public Class Class { get; private set; }
+        public IReadOnlyCollection<AttendAndAbsenceStatus> AttendAndAbsenceStatuses { get; init; }
+        public IReadOnlyCollection<AttendAndAbsenceTraffic> Traffics { get; init; }
+        public IReadOnlyCollection<DisciplinaryStatus> DisciplinaryStatuses { get; init; }
+
+
+
 
         //public Result Update(
         //    [Optional] Class @class,

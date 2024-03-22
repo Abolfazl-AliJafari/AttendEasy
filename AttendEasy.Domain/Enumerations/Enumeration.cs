@@ -19,10 +19,17 @@ namespace AttendEasy.Domain.Enumerations
         Encouragement,
         Punishment
     }
-    public enum AttendAndAbsenceType
+
+    public enum TrafficType
     {
         Login,
-        Exit,
+        Exit
+    }
+    public enum AttendAndAbsenceType
+    {
+        EarlyExited,
+        EndShiftExit,
+        EndShiftAutoExit,
         Delay,
         Absence,
         Attend
