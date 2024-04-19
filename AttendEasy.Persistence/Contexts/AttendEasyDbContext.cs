@@ -1,5 +1,6 @@
 ﻿using System;
 using AttendEasy.Domain.Entities;
+using AttendEasy.Persistence.Configorations;
 using Microsoft.EntityFrameworkCore;
 
 namespace AttendEasy.Persistence.Contexts
@@ -25,6 +26,12 @@ namespace AttendEasy.Persistence.Contexts
 		public DbSet<DisciplinaryStatus> DisciplinaryStatuses { set; get; }
 		public DbSet<User> Users { set; get; }
 		public DbSet<Setting> Settings { set; get; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+			modelBuilder.ApplyConfigurationsFromAssembly(typeof(AttendEasyDbContext).Assembly);
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
 

@@ -4,9 +4,9 @@ namespace AttendEasy.Domain.Entities
 
 	public abstract class Entity<T> 
 	{
-		public Entity(T id)
+		public Entity()
 		{
-			Id = id;
+			
 		}
         public T Id { get; init; }
     }

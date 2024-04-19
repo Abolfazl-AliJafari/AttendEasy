@@ -13,7 +13,9 @@ namespace AttendEasy.Persistence.Configorations
 
         public void Configure(EntityTypeBuilder<AttendAndAbsenceReason> builder)
         {
-            throw new NotImplementedException();
+			builder.HasKey(a => a.Id);
+
+			
         }
     }
 }

@@ -9,11 +9,10 @@ using System.Threading.Tasks;
 
 namespace AttendEasy.Domain.Entities
 {
-    public class Level
+    public class Level : Entity<int>
     {
         public Level(Title title , LevelNumber levelNumber)
         {
-            Id = Guid.NewGuid();
             if(title is null)
             {
                 throw new ArgumentNullException("Level Title Can Not Null.");
@@ -25,12 +24,11 @@ namespace AttendEasy.Domain.Entities
             Title= title;
             LevelNumber= levelNumber;
         }
-        public Guid Id { get; set; }
-        [Required]
-        [DisplayName("عنوان")]
+
         public Title Title { get; set; }
-        [DisplayName("شماره پایه")]
+
         public LevelNumber LevelNumber { get; set; }
+        
 
     }
 }

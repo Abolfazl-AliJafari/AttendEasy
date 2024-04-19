@@ -4,8 +4,8 @@ namespace AttendEasy.Domain.Entities
 	public class Role : Entity<int>
 	{
 		private readonly List<User> _users = new();
-		public Role(int id,
-			string title) : base(id)
+		public Role(
+			string title) 
 		{
 			Title = title;
 		}

@@ -3,11 +3,11 @@ namespace AttendEasy.Domain.Entities
 {
 	public class User : Entity<int>
 	{
-		public User(int id,
+		public User(
 			string firstName,
 			string lastName,
 			string userName,
-			string passWord) : base(id)
+			string passWord)
 		{
 			FirstName = firstName;
 			LastName = lastName;

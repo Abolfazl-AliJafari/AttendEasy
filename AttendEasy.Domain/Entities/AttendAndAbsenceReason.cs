@@ -5,11 +5,11 @@ namespace AttendEasy.Domain.Entities
 {
 	public class AttendAndAbsenceReason : Entity<int>
 	{
-		public AttendAndAbsenceReason(int id,
+		public AttendAndAbsenceReason(
 			string title,
 			float score,
 			AttendAndAbsenceType type,
-			string description = "") : base(id)
+			string description = "") 
 		{
 			Title = title;
 			Score = score;
@@ -21,7 +21,7 @@ namespace AttendEasy.Domain.Entities
 		public float Score { get; private set; }
 		public string? Description { get; private set; }
 		public AttendAndAbsenceType Type { get; private set; }
-		public IReadOnlyCollection<AttendAndAbsenceStatus> Statuses { get; }
+		public IReadOnlyCollection<AttendAndAbsenceStatus>? Statuses { get; }
 
 		public void ChangeTitle(string title)
 		{

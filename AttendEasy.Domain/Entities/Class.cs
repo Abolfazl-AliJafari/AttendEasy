@@ -4,13 +4,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AttendEasy.Domain.Entities
 {
-    public class Class
+    public class Class : Entity<int>
     {
         public Class(Level level,
             Field? field,
             Tag? tag)
         {
-            Id = Guid.NewGuid();
             if(field is not null)
             {
                 Field = field;
@@ -45,21 +44,16 @@ namespace AttendEasy.Domain.Entities
             Level= level;
         }
 
-        [Required]
-        public Guid Id { get; }
         //Title Of Class For Example : کلاس نهم الف , دوازدهم شبکه و نرم افزار
-        [Required]
-        [DisplayName("عنوان")]
         public Title Title { get; private set; }
-        [Required]
-        [DisplayName("پایه")]
+
         //Level Of This Class For Example : 12,1 (پایه مورد نظر)
         public Level Level { get; private set; }
-        [DisplayName("رشته")]
+
         //Feild Of This Class For Example : شبکه و نرم افزار (Optional)
         public Field? Field { get; private set; }
         //Tag Of This Class For Example : کلاس الف , کلاس ب (Optional)
-        [DisplayName("برچسب")]
+
         public Tag? Tag { get; private set; }
          
         public void UpdateTitle(Level level,

@@ -5,11 +5,11 @@ namespace AttendEasy.Domain.Entities
 {
 	public class DisciplinaryReason : Entity<int>
 	{
-		public DisciplinaryReason(int id,
+		public DisciplinaryReason(
 			string title,
 			float score,
 			DisciplinaryType type,
-			string description = "") :base(id)
+			string description = "")
 		{
 			Title = title;
 			Score = score;

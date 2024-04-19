@@ -7,8 +7,7 @@ namespace AttendEasy.Domain.Entities
 	public class AttendAndAbsenceTraffic : Entity<Guid>
 	{
 		public AttendAndAbsenceTraffic(Student student,
-			TrafficType type):
-			base(Guid.NewGuid())
+			TrafficType type)
 		{
 			Student = student;
 			Type = type;

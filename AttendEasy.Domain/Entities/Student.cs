@@ -13,7 +13,7 @@ using System.ComponentModel;
 
 namespace AttendEasy.Domain.Entities
 {
-    public class Student
+    public class Student : Entity<Guid>
     {
         public Student(
             NationalCode nationalCode,
@@ -35,7 +35,6 @@ namespace AttendEasy.Domain.Entities
             string description = "",
             string address = "")
         {
-            Id = Guid.NewGuid();
             if(string.IsNullOrWhiteSpace(nationalCode))
             {
                 throw new ArgumentException("NationalCode Is Required.");
@@ -76,66 +75,54 @@ namespace AttendEasy.Domain.Entities
 
         }
 
-        [Required]
-        public Guid Id { get;  }
-        [Required]
-        [DisplayName("کد ملی")]
         public NationalCode NationalCode { get;  }
-        [Required]
-        [DisplayName("کد دانش آموزی")]
+
         public StudentCode StudentCode { get;  } 
-        [Required]
-        [DisplayName("نام")]
+
         public FirstName FirstName { get;  private set; }
-        [Required]
-        [DisplayName("نام خانوادگی")]
+
         public LastName LastName { get; private set; }
-        [Required]
-        [DisplayName("تاریخ تولد")]
+
         public BirthDayDate BirthDayDate { get; private set; }
         //Url Of Profile Photo
-        [DisplayName("پروفایل")]
+
         public string? Profile { get; private set; }
-        [DisplayName("شماره تلفن همراه")]
+
         public MobileNumber? MobileNumber { get; private set; }
-        [DisplayName("شماره تلفن ثابت")]
+
         public HomeNumber? HomeNumber { get; private set; }
-        [DisplayName("نام پدر")]
+
         public FirstName? FatherName { get; private set; }
-        [DisplayName("شغل پدر")]
+
         public Job? FatherJob { get; private set; }
-        [DisplayName("شغل مادر")]
+
         public Job? MotherJob { get; private set; }
-        [DisplayName("شماره موبایل پدر")]
+
         public MobileNumber? FatherMobile { get; private set; }
-        [DisplayName("شماره موبایل مادر")]
+
         public MobileNumber? MotherMobile { get; private set; }
         //Foat valedeyan
-        [DisplayName("فوت والدین")]
+
         public DeadParentStatus? DeadParent { get; private set; }
         //Jodai valedeyan
-        [DisplayName("جدایی والدین")]
+
         public bool? LeftParent { get; private set; }
         //Extra Field For Others 
-        [DisplayName("توضیحات بیشتر")]
+
         public string? Description { get; private set; }
-        [DisplayName("آدرس محل سکونت")]
+
         public string? Address { get; private set; }
-        [Required]
-        [DisplayName("نمره انضباطی")]
+
         public Score Score { get; private set; } = 20;
 
-        [Required]
-        [DisplayName("دین")]
+
         public Religion Religion { get; private set; }
 
-        [Required]
-        [DisplayName("ملیت")]
+
         public Nationality Nationality { get; private set; }
         //[Required]
         //public DateTime RegisterDate { get;}
         //Class Of Student
-        [DisplayName("اثر انگشت")]
         public byte[] FingerPrint { get; private set; }
 
         public Class Class { get; private set; }

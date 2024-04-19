@@ -9,7 +9,7 @@ namespace AttendEasy.Domain.Entities
 			DisciplinaryType type,
 			DisciplinaryReason reason,
 			Student student,
-			string description = ""):base(Guid.NewGuid())
+			string description = "")
 		{
 
 			Date = date;

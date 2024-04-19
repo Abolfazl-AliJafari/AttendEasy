@@ -9,21 +9,17 @@ using System.Threading.Tasks;
 
 namespace AttendEasy.Domain.Entities
 {
-    public class Tag
+    public class Tag : Entity<int>
     {
         public Tag(Title title)
         {
-            Id = Guid.NewGuid();
+
             if (title is null)
             {
                 throw new ArgumentNullException("Tag Title Can Not Null.");
             }
             Title = title;
         }
-
-        public Guid Id { get; set; }
-        [Required]
-        [DisplayName("عنوان")]
         public Title Title{ get; set; }
     }
 }

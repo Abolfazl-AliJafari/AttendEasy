@@ -10,14 +10,15 @@ namespace AttendEasy.Domain.Entities
 			TimeSpan time,
 			Student student,
             AttendAndAbsenceType type,
-
+			AttendAndAbsenceReason reason,
 			string description = ""
-            ) :base(Guid.NewGuid())
+            ) 
 		{
 			Date = date;
 			Time = time;
 			Student = student;
 			Type = type;
+			Reason = reason;
 			Description = description;
 		}
 
